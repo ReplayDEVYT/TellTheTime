@@ -33,6 +33,12 @@ namespace TellTheTime.Patches
             string time = Singleton<GameWorld>.Instance.GameDateTime.DateTime_1.ToString("HH:mm:ss");
 
             NotificationManagerClass.DisplayMessageNotification($"Current time is: {time}", ENotificationDurationType.Default, ENotificationIconType.EntryPoint);
+
+            if (Plugin.EnableLocalTime.Value)
+            {
+                string localTime = DateTime.Now.ToString("HH:mm:ss");
+                NotificationManagerClass.DisplayMessageNotification($"IRL time is: {localTime}", ENotificationDurationType.Default, ENotificationIconType.EntryPoint);
+            }
         }
     }
 }

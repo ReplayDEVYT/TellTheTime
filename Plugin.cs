@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,15 @@ namespace TellTheTime
     public class Plugin : BaseUnityPlugin
     {
         public static ManualLogSource LogSource;
+        public static ConfigEntry<bool> EnableLocalTime;
 
         private void Awake()
         {
             // save the Logger to variable so we can use it elsewhere in the project
             LogSource = Logger;
             LogSource.LogInfo("plugin loaded!");
+
+            EnableLocalTime = Config.Bind("Settings", "EnableLocalTime", false, "Displays real-world time alongside raid time.");
 
             new WatchPatch().Enable();
         }
