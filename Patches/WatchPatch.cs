@@ -30,7 +30,7 @@ namespace TellTheTime.Patches
                 return;
             }
 
-            string time = Singleton<GameWorld>.Instance.GameDateTime.DateTime_1.ToString("HH:mm:ss");
+            string time = Singleton<GameWorld>.Instance.GameDateTime.Calculate().ToString("HH:mm:ss");
 
             NotificationManagerClass.DisplayMessageNotification($"Current time is: {time}", ENotificationDurationType.Default, ENotificationIconType.EntryPoint);
 
